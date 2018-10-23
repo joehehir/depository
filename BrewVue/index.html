@@ -6,68 +6,69 @@
 <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-    <div id="app">
-        <!-- @media editor mode -->
-        <a class="codepen-full-page-prompt" href="https://codepen.io/joehehir/full/" target="_blank">
-            <svg viewBox="0 0 204 158">
-                <polyline points="10 52, 10 10, 194 10, 194 22" />
-                <line x1="4" y1="64" x2="200" y2="34" />
-                <line x1="4" y1="68" x2="200" y2="38" />
-                <line x1="4" y1="72" x2="200" y2="42" />
-                <path d="M 4 132 L 200 102" id="text-primary-baseline" />
-                <line x1="4" y1="136" x2="200" y2="106" />
-                <polyline points="10 148, 194 148, 194 118" />
-                <!-- text -->
-                <text x="20" y="36" class="text-secondary">TAP HERE FOR</text>
-                <g transform="translate(24, -12) skewX(-10)">
-                    <text>
-                        <textPath xlink:href="#text-primary-baseline">FULL PAGE</textPath>
-                    </text>
-                </g>
-                <text x="140" y="138" class="text-secondary">MODE</text>
-                <!-- /text -->
-            </svg>
-        </a>
-        <!-- /@media editor mode -->
 
-        <header>
-            <h1>BrewVue</h1>
-            <h2 v-cloak v-html="subheading"></h2>
-        </header>
+<div id="app">
+    <!-- @media editor mode -->
+    <a class="codepen-full-page-prompt" href="https://codepen.io/joehehir/full/YJJGXV" target="_blank">
+        <svg viewBox="0 0 204 158">
+            <polyline points="10 52, 10 10, 194 10, 194 22" />
+            <line x1="4" y1="64" x2="200" y2="34" />
+            <line x1="4" y1="68" x2="200" y2="38" />
+            <line x1="4" y1="72" x2="200" y2="42" />
+            <path d="M 4 132 L 200 102" id="text-primary-baseline" />
+            <line x1="4" y1="136" x2="200" y2="106" />
+            <polyline points="10 148, 194 148, 194 118" />
+            <!-- text -->
+            <text x="20" y="36" class="text-secondary">TAP HERE FOR</text>
+            <g transform="translate(24, -12) skewX(-10)">
+                <text>
+                    <textPath xlink:href="#text-primary-baseline">FULL PAGE</textPath>
+                </text>
+            </g>
+            <text x="140" y="138" class="text-secondary">MODE</text>
+            <!-- /text -->
+        </svg>
+    </a>
+    <!-- /@media editor mode -->
 
-        <main>
-            <section id="container" :class="{ loading: isLoading }" ref="container">
-                <div v-cloak v-for="(obj, index) in renderItems" :key="obj.id" :class="['item-wrap', { selected: obj.id === selectedItem }]"
-                    @click="selectedItem = (selectedItem === obj.id) ? undefined : obj.id" @mouseenter="selectedItem = undefined">
-                    <figure class="item">
-                        <aside class="a-side">
-                            <span class="a-side__name">{{ obj.name }}</span>
-                            <div class="a-side__image">
-                                <img :src="obj.image_url" :alt="obj.name">
-                            </div>
-                            <span class="a-side__tagline">{{ obj.tagline }}</span>
-                        </aside>
-                        <aside class="b-side">
-                            <div class="b-side__info">
-                                <span class="b-side__info-item" :class="{ empty: obj.abv === null }">{{ obj.abv | textContent('ABV') }}</span>
-                                <span class="b-side__info-item" :class="{ empty: obj.ibu === null }">{{ obj.ibu | textContent('IBU') }}</span>
-                                <span class="b-side__info-item" :class="{ empty: obj.srm === null }">{{ obj.srm | textContent('SRM') }}</span>
-                            </div>
-                            <span class="b-side__text">
-                                <span class="text-ellipsis">{{ obj.description }}</span>
-                            </span>
-                        </aside>
-                    </figure>
-                </div>
-            </section>
-        </main>
+    <header>
+        <h1>BrewVue</h1>
+        <h2 v-cloak v-html="subheading"></h2>
+    </header>
 
-        <footer>
-            <div class="action-btn-perspective">
-                <button class="action-btn" @click="nextSet">New batch</button>
+    <main>
+        <section id="container" :class="{ loading: isLoading }" ref="container">
+            <div v-cloak v-for="(obj, index) in renderItems" :key="obj.id" :class="['item-wrap', { selected: obj.id === selectedItem }]"
+                @click="selectedItem = (selectedItem === obj.id) ? undefined : obj.id" @mouseenter="selectedItem = undefined">
+                <figure class="item">
+                    <aside class="a-side">
+                        <span class="a-side__name">{{ obj.name }}</span>
+                        <div class="a-side__image">
+                            <img :src="obj.image_url" :alt="obj.name">
+                        </div>
+                        <span class="a-side__tagline">{{ obj.tagline }}</span>
+                    </aside>
+                    <aside class="b-side">
+                        <div class="b-side__info">
+                            <span class="b-side__info-item" :class="{ empty: obj.abv === null }">{{ obj.abv | textContent('ABV') }}</span>
+                            <span class="b-side__info-item" :class="{ empty: obj.ibu === null }">{{ obj.ibu | textContent('IBU') }}</span>
+                            <span class="b-side__info-item" :class="{ empty: obj.srm === null }">{{ obj.srm | textContent('SRM') }}</span>
+                        </div>
+                        <span class="b-side__text">
+                            <span class="text-ellipsis">{{ obj.description }}</span>
+                        </span>
+                    </aside>
+                </figure>
             </div>
-        <footer>
-    </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="action-btn-perspective">
+            <button class="action-btn" @click="nextSet">New batch</button>
+        </div>
+    <footer>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script src="./script.js"></script>
